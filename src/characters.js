@@ -8,9 +8,11 @@ class Character {
         this.potions = 5;
     }
     fight(target) {
-        let dmg = this.attack + (Math.floor(Math.random() * target.defense) * 2);
+        var announce = $('<div />').attr('id', 'announcement');
+        let dmg = this.attack + (Math.floor(Math.random() * (this.attack - target.defense)));
         target.health -= dmg;
-        console.log(this.name + ' attacked ' + target.name + ' and did ' + dmg + ' damage!');
+        $('body').append(announce);
+        $(announce).append(this.name + ' attacked ' + target.name + ' and did ' + dmg + ' damage!');
     }
     defend() {
         console.log(`${this.name} defended against the attack!`);
@@ -37,7 +39,15 @@ class Character {
 let James = new Character('James', 720, 720, 25, 36);
 let Sorefuji = new Character('Sorefuji', 690, 690, 34, 18);
 
-James.fight(Sorefuji);
-James.fight(Sorefuji);
+function playerAction() {
+    let commWindow = $('<div />').attr('id', 'command');
+    $('body').append(commWindow);
+    let commSelect = $('<div />').attr('id', 'select');
+    $('#command').append(commSelect);
+}
 
-console.log(Sorefuji.health);
+
+
+function enemyAction() {
+
+}

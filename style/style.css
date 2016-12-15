@@ -1,0 +1,38 @@
+html {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+}
+
+body {
+    height: 92%;
+    width: 92%;
+    margin: 0 auto;
+    background-color: white;
+    position: relative;
+    top: 4%;
+}
+
+#announcement {
+    position: relative;
+    top: 1%;
+    border: 1px solid red;
+    height: 5%;
+    width: 95%;
+    text-align: center;
+    margin: auto;
+}
+
+#command {
+    position: absolute;
+    margin: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 1px solid red;
+    border-radius: 25px 25px 0px 0px;
+    height: 40%;
+    width: 95%;
+}
+
+#select {}
