@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 html {
     height: 100%;
     width: 100%;
@@ -5,12 +6,13 @@ html {
 }
 
 body {
-    height: 92%;
-    width: 92%;
+    height: 75%;
+    width: 75%;
     margin: 0 auto;
     background-color: white;
     position: relative;
     top: 4%;
+    font-family: 'Press Start 2P', cursive;
 }
 
 #announcement {
@@ -35,4 +37,22 @@ body {
     width: 95%;
 }
 
-#select {}
+ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    width: 25%;
+    margin: auto;
+    position: relative;
+    top: 20px;
+}
+
+li {
+    border: 1px solid white;
+    padding: 10px;
+}
+
+li:hover {
+    border: 1px solid red;
+    cursor: pointer;
+}
