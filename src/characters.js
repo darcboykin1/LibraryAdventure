@@ -1,18 +1,29 @@
 class Character {
-    constructor(name, health, maxhealth, attack, defense) {
+    constructor(name, health, maxhealth, attack, defense, potions) {
         this.name = name;
         this.health = health;
         this.maxhealth = maxhealth;
         this.attack = attack;
         this.defense = defense;
-        this.potions = 5;
+        this.potions = potions;
     }
     fight(target) {
-        var announce = $('<div />').attr('id', 'announcement');
-        let dmg = this.attack + (Math.floor(Math.random() * (this.attack - target.defense)));
-        target.health -= dmg;
-        $('.message-wrapper').html(announce);
-        $(announce).text(this.name + ' attacked ' + target.name + ' and did ' + dmg + ' damage!').delay(1500).fadeOut();
+        let roll = Math.floor(Math.random() * 4);
+        if (roll < 3) {
+            var announce = $('<div />').attr('id', 'announcement');
+            let dmg = this.attack + (Math.floor(Math.random() * (this.attack - target.defense)));
+            target.health -= dmg;
+            $('.message-wrapper').html(announce);
+            $(announce).text(this.name + ' attacked ' + target.name + ' and did ' + dmg + ' damage!').delay(1500).fadeOut();
+            eneAct();
+        } else if (roll > 3) {
+            var announce = $('<div />').attr('id', 'announcement');
+            let dmg = this.attack + (Math.floor(Math.random() * (this.attack - target.defense)) * 1.8);
+            target.health -= dmg;
+            $('.message-wrapper').html(announce);
+            $(announce).text(this.name + ' attacked ' + target.name + ' and scored a critical hit for' + dmg + ' damage!').delay(1500).fadeOut();
+            eneAct();
+        }
     }
     defend() {
         console.log(`${this.name} defended against the attack!`);
@@ -21,25 +32,32 @@ class Character {
         if (this.health == this.maxhealth) {
             var announce = $('<div />').attr('id', 'announcement');
             $('.message-wrapper').html(announce);
-            $(announce).text(this.name + ' has full health!').delay(1500).fadeOut();
+            $(announce).text(this.name + ' has full health!').delay(500).fadeOut();
         } else if (this.potions === 0) {
-            $(announce).text(this.name + ' has no potions!').delay(1500).fadeOut();
-        } else if (this.health > (this.maxhealth - 40) && this.health < this.maxhealth) {
+            var announce = $('<div />').attr('id', 'announcement');
+            $('.message-wrapper').html(announce);
+            $(announce).text(this.name + ' has no potions!').delay(500).fadeOut();
+        } else if (this.health > (this.maxhealth - 100) && this.health < this.maxhealth) {
+            var announce = $('<div />').attr('id', 'announcement');
+            $('.message-wrapper').html(announce);
             let aid = (this.maxhealth - this.health);
             this.health += aid;
-            $(announce).text(this.name + ' healed' + aid + ' HP').delay(1500).fadeOut();
+            $(announce).text(this.name + ' healed' + aid + ' HP').delay(500).fadeOut();
         } else if (this.potions > 0) {
-            this.health += 40;
+            var announce = $('<div />').attr('id', 'announcement');
+            $('.message-wrapper').html(announce);
+            this.health += 100;
             this.potions -= 1;
-            $(announce).text(this.name + ' healed 40 HP!').delay(1500).fadeOut();
+            $(announce).text(this.name + ' healed 100 HP!').delay(500).fadeOut();
+            eneAct();
         }
     }
 }
 
 
 
-let James = new Character('James', 420, 420, 25, 36);
-let Sorefuji = new Character('Sorefuji', 390, 390, 34, 18);
+let James = new Character('James', 420, 420, 25, 36, 5);
+let Sorefuji = new Character('Sorefuji', 390, 390, 34, 18, 2);
 
 let decision = ['Attack', 'Use Potion']
 
@@ -56,10 +74,21 @@ function playerAction() {
     $('ul li:nth-of-type(2)').on('click', function() { James.potion() });
 }
 
-
-
 function enemyAction() {
-
+    Sorefuji.fight(James);
 }
 
-playerAction();
+
+function act() { setTimeout(function() { playerAction() }, 500); };
+
+function eneAct() { setTimeout(function() { enemyAction() }, 500); };
+act();
+
+var audio = new Audio('');
+audio.oncanplaythrough = function() {
+    audio.play();
+}
+audio.loop = true;
+audio.onended = function() {
+    audio.play();
+}
