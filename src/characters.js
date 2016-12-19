@@ -11,7 +11,7 @@ class Character {
     fight(target) {
         $('#command').remove();
         let roll = Math.floor(Math.random() * 4);
-        if (roll <= 2.8) {
+        if (roll <= 2.9) {
             $('#james').animate({ left: '-=20px', top: '-=30px' }, 100);
             $('#james').animate({ left: '-=20px', top: '+=30px' }, 100);
             $('#james').animate({ left: '+=20px', top: '-=30px' }, 100);
@@ -27,17 +27,19 @@ class Character {
             } else {
                 eneAct();
             }
-        } else if (roll > 2.8) {
+        } else if (roll > 2.9) {
             $('#james').animate({ left: '-=400px', top: '-=250px' }, 3000);
             $('#james').animate({ left: '-=400px', top: '+=250px' }, 100);
+            $('#james').animate({ top: '-150px' }, 1000);
+            $('#james').animate({ top: '+150px' }, 100);
             $('#james').animate({ left: '+=400px', top: '-=250px' }, 100);
             $('#james').animate({ left: '+=400px', top: '+=250px' }, 100);
             let announce = $('<div />').attr('id', 'announcement');
-            let dmg = this.attack + (Math.floor(Math.random() * (this.attack - target.defense) * 2.5));
+            let dmg = this.attack + (Math.floor(Math.random() * (this.attack - target.defense))) * 2;
             target.health -= dmg;
             $('.message-wrapper').html(announce);
             $('#james').removeClass('jamesattack');
-            $(announce).text(this.name + ' attacked ' + target.name + ' and scored a critical hit for ' + dmg + ' damage!').delay(2000).fadeOut();
+            $(announce).text(this.name + ' use Draconic Crunch on ' + target.name + ' and dealt ' + dmg + ' damage!').delay(2000).fadeOut();
             if (target.health <= 0) {
                 $(announce).text(this.name + ' defeated ' + target.name + ' ! ');
                 $('#sorefuji').delay(500).fadeOut();
@@ -113,10 +115,10 @@ class enemy extends Character {
             $('#sorefuji').animate({ left: '+=15px' }, 75);
             $('#sorefuji').animate({ left: '-=690px' }, 500);
             let announce = $('<div />').attr('id', 'announcement');
-            let dmg = this.attack + (Math.floor(Math.random() * (this.attack - target.defense) * 2));
+            let dmg = this.attack + (Math.floor(Math.random() * (this.attack - target.defense))) * 1.8;
             target.health -= dmg;
             $('.message-wrapper').html(announce);
-            $(announce).text(this.name + ' used gambling flurry on ' + target.name + ' for ' + dmg + ' damage!').delay(2000).fadeOut();
+            $(announce).text(this.name + ' used Gambling Flurry on ' + target.name + ' for ' + dmg + ' damage!').delay(2000).fadeOut();
             if (target.health <= 0) {
                 $(announce).text(this.name + ' defeated ' + target.name + ' ! ' + ' Game Over!! ');
                 $('#james').delay(500).fadeOut();
