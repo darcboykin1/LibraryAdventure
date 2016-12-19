@@ -13,16 +13,21 @@ body {
     position: relative;
     top: 4%;
     font-family: 'Press Start 2P', cursive;
+    background-image: url('http://i.imgur.com/kaK3C.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #announcement {
-    position: relative;
+    position: absolute;
     top: 1%;
     border: 1px solid red;
     height: 5%;
     width: 95%;
     text-align: center;
     margin: auto;
+    color: white;
 }
 
 #command {
@@ -31,7 +36,6 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    border: 1px solid red;
     border-radius: 25px 25px 0px 0px;
     height: 40%;
     width: 95%;
@@ -45,7 +49,8 @@ ul {
     width: 25%;
     margin: auto;
     position: relative;
-    top: 60px;
+    top: 130px;
+    color: white;
 }
 
 li {
@@ -55,5 +60,34 @@ li {
 
 li:hover {
     border: 1px solid red;
+    color: red;
     cursor: pointer;
 }
+
+#sorefuji {
+    position: relative;
+    top: 400px;
+    left: 50px;
+}
+
+#james {
+    position: relative;
+    top: 390px;
+    left: 650px;
+}
+
+
+/*@keyframes james {
+    50% {
+        top: 380px;
+        right: 10px;
+    }
+    100% {
+        top: 10px;
+    }
+}
+
+.jamesattack {
+    animation: james 0.5s infinite;
+    animation-iteration-count: 1;
+}*/
