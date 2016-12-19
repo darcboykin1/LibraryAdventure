@@ -85,10 +85,9 @@ class enemy extends Character {
         let roll = Math.floor(Math.random() * 4);
         if (roll <= 2) {
             $('#sorefuji').animate({ left: '+=20px', top: '-=30px' }, 100);
-            $('#sorefuji').animate({ leftt: '+=20px', top: '+=30px' }, 100);
+            $('#sorefuji').animate({ left: '+=20px', top: '+=30px' }, 100);
             $('#sorefuji').animate({ left: '-=20px', top: '-=30px' }, 100);
             $('#sorefuji').animate({ left: '-=20px', top: '+=30px' }, 100);
-
             var announce = $('<div />').attr('id', 'announcement');
             let dmg = this.attack + (Math.floor(Math.random() * (this.attack - target.defense)));
             target.health -= dmg;
@@ -106,6 +105,12 @@ class enemy extends Character {
             $('#sorefuji').animate({ left: '+=20px', top: '-=30px' }, 50);
             $('#sorefuji').animate({ left: '+=20px', top: '+=30px' }, 50);
             $('#sorefuji').animate({ left: '+=610px' }, 100);
+            $('#sorefuji').animate({ left: '-=15px' }, 75);
+            $('#sorefuji').animate({ left: '+=15px' }, 75);
+            $('#sorefuji').animate({ left: '-=15px' }, 75);
+            $('#sorefuji').animate({ left: '+=15px' }, 75);
+            $('#sorefuji').animate({ left: '-=15px' }, 75);
+            $('#sorefuji').animate({ left: '+=15px' }, 75);
             $('#sorefuji').animate({ left: '-=690px' }, 500);
             let announce = $('<div />').attr('id', 'announcement');
             let dmg = this.attack + (Math.floor(Math.random() * (this.attack - target.defense) * 2));
