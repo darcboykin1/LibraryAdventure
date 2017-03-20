@@ -101,6 +101,7 @@ class enemy extends Character {
                 act();
             }
         } else if (roll > 2) {
+            //critical hit animation
             $('#sorefuji').animate({ left: '+=20px', top: '-=30px' }, 50);
             $('#sorefuji').animate({ left: '+=20px', top: '+=30px' }, 50);
             $('#sorefuji').animate({ left: '+=20px', top: '-=30px' }, 50);
@@ -122,6 +123,7 @@ class enemy extends Character {
             if (target.health <= 0) {
                 $(announce).text(this.name + ' defeated ' + target.name + ' ! ' + ' Game Over!! ');
                 $('#james').delay(500).fadeOut();
+                //end of the critical hit action
             } else {
                 act();
             }
@@ -158,7 +160,7 @@ function eneAct() { setTimeout(function() { enemyAction(); }, 2000); }
 
 act();
 
-var audio = new Audio('/Users/student_26/ga/projects/LibraryAdventure/assets/exhaust.mp3');
+var audio = new Audio('./assets/Fight!.mp3');
 audio.oncanplaythrough = function() {
     audio.play();
 };
